@@ -8,34 +8,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.FieldDefaults;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Qquestion implements Serializable {
-
+@NoArgsConstructor
+public class QvtAnswer implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long Qid;
-	String content;
-	String choice;
-	int correctNumbr;
-	int pointNumbr;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long AnswerId;
+	private String Content;
 	
-	@ManyToOne 
-	Quiz quiz;
+	@ManyToOne
+	User user;
+	
+	@ManyToOne
+	Qvt question;
 }

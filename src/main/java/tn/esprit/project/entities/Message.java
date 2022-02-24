@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,13 @@ public class Message implements Serializable {/**
 	String text;
 	Timestamp mDate;
 	boolean viewed;
+	
+	@ManyToOne
+	User sender;
+	
+	@ManyToOne
+	User reciever;
+	
+	
 	
 }

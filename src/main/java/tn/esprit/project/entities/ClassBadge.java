@@ -1,6 +1,8 @@
 package tn.esprit.project.entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+
 @Entity
 @Getter
 @Setter
@@ -22,20 +25,19 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Qquestion implements Serializable {
+public class ClassBadge  implements Serializable {
+	 
+		private static final long serialVersionUID = 1L;
+		@Id 
+		@GeneratedValue (strategy = GenerationType.IDENTITY)
+		Long Id;
+		String description;
+		Badge badge;
+		
+		@ManyToOne 
+		User user;
+		
+		@ManyToOne 
+		Evaluation evaluation;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	long Qid;
-	String content;
-	String choice;
-	int correctNumbr;
-	int pointNumbr;
-	
-	@ManyToOne 
-	Quiz quiz;
 }

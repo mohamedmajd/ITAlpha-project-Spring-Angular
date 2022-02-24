@@ -2,11 +2,14 @@ package tn.esprit.project.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -38,4 +41,11 @@ public class Event implements Serializable{
 	String offers;
 	int likenbr;
 	String eventReward;
+	
+	@OneToMany
+	List<Action> actions;
+	
+	@OneToMany(mappedBy ="event")
+	List<Reward> eventrewards;
+	
 }

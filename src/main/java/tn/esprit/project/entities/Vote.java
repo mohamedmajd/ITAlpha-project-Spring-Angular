@@ -1,11 +1,14 @@
 package tn.esprit.project.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,5 +33,11 @@ public class Vote implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	long voteId;
 	boolean status;
+	
+	@ManyToOne 
+	Reward reward;
+	
+	@OneToMany(mappedBy = "vote")
+	List<User> userVotes;
 
 }

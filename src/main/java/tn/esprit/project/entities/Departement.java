@@ -6,11 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 @Getter
@@ -28,6 +30,9 @@ public class Departement implements Serializable {
     private String title;
     private String Description;
     private String adresse;
+    
+    @OneToMany(mappedBy ="department")
+    List<User> users;
 
 
 }

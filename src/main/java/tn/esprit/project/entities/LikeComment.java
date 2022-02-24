@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,5 +30,10 @@ public class LikeComment implements Serializable {/**
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	Long IdLike ;
 	boolean statut;
+	@ManyToOne
+	User userLike;
+	
+	@ManyToOne
+	Comment commentLiked ;
 
 }

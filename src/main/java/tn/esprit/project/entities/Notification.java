@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -35,5 +36,10 @@ public class Notification implements Serializable {
 	boolean status;
 	Timestamp notDate;
 	String content;
+	
+	@ManyToOne 
+	User user;
+	
+	
 	
 }

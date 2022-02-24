@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -32,4 +33,10 @@ public class Opinion implements Serializable {
 	Long IdOpinion;
 	String Content;
 	int signaler;
+	
+	@ManyToOne
+	User userOpinion;
+	
+	@ManyToOne
+	Forum forumOpinion;
 }
