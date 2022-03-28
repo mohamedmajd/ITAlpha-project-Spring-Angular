@@ -1,4 +1,4 @@
-package tn.esprit.project.entities;
+package tn.esprit.project.Entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -63,9 +65,6 @@ public class User implements Serializable {
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userP")
 	 private List<Post> Posts;
 	 
-	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userLike")
-	 private List<LikePost> likePosts;
-	 
 	 @OneToMany(cascade = CascadeType.ALL, mappedBy="userComment")
 	 private List<Comment> Comments;
 	 
@@ -92,14 +91,20 @@ public class User implements Serializable {
 	 
 	 @ManyToOne 
 	 Departement department;
-	 
+		
+
 	 @OneToMany(mappedBy = "sender")
 	 List<Message> msgSent;
-	 
+		
+
 	 @OneToMany(mappedBy ="reciever")
 	 List<Message> msgRecieved;
 	 
-	 
-	 
+	    @ManyToMany(cascade = CascadeType.ALL, mappedBy="userL")
+	    private List<Event> rEvents;
+	    @JsonIgnore
+	    @OneToMany (cascade = CascadeType. ALL,mappedBy ="user")
+		 List<Score> scoree;
+		 
 	 
 }
